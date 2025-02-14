@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dior Sauvage - Exclusive Deal</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background-color: #ff6600;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        /* Dark Mode Button */
+        .toggle-dark-mode {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        /* Product Section */
+        #product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 20px;
+            background-color: #fff;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode #product {
+            background-color: #1e1e1e;
+        }
+
+        .product-card img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .product-details {
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .product-details h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-details p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Buy Button */
+        .buy-btn {
+            background: #ff6600;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .buy-btn:hover {
+            background: #cc5500;
+        }
+
+        /* Ad Blocker Message */
+        .ad-blocker-message {
+            font-size: 1.5rem;
+            color: red;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #product {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .product-details {
+                text-align: center;
+            }
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+
+        #backToTop:hover {
+            background: #cc5500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://dynamic.design.com/asset/logo/caf654b1-5819-438f-9706-22ca1bba5e84/logo-search-grid-1x?logoTemplateVersion=1&v=638749212882000000&text=turbo+styling.com&colorpalette=orange" alt="Store Logo">
+        </div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Dior Sauvage - Exclusive Deal</h1>
+        <p>Get the best price on the luxurious Dior Sauvage fragrance!</p>
+        <a href="#product" class="buy-btn">View Product</a>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product">
+        <div class="product-card">
+            <img src="https://styleit.fashion/cdn/shop/files/christian-dior-sauvage-parfum-za-moske-100-ml-291466.jpg?v=1736797269&width=990" alt="Dior Sauvage">
+        </div>
+        <div class="product-details">
+            <h3>Dior Sauvage</h3>
+            <p>Choose your bottle size:</p>
+            <select id="sizeSelect" onchange="updatePrice()">
+                <option value="19.99">Mini (60ml) - $19.99</option>
+            </select>
+            <p id="price">$19.99</p> <!-- Fixed Initial Price -->
+            <a href="#cart" class="buy-btn">Buy Now</a>
+        </div>
+    </section>
+
+    <!-- Ad Blocker Detection Message -->
+    <div id="ad-blocker-message" class="ad-blocker-message" style="display: none;">
+        <h2>Ad Blocker Detected!</h2>
+        <p>We noticed you're using an ad blocker. Please disable it to continue enjoying our website.</p>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">⬆️</button>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        };
+
+        function updatePrice() {
+            let sizeSelect = document.getElementById("sizeSelect");
+            let price = document.getElementById("price");
+            price.innerHTML = "$" + sizeSelect.value;
+        }
+
+        window.onscroll = function() {
+            let backToTop = document.getElementById("backToTop");
+            if (document.documentElement.scrollTop > 200) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Ad Blocker Detection
+        function isAdBlockerDetected() {
+            var ad = document.createElement('div');
+            ad.innerHTML = '&nbsp;';
+            ad.className = 'adsbox';  // Name a class that ad blockers typically block
+            document.body.appendChild(ad);
+
+            var isBlocked = ad.offsetHeight === 0; // Ad blockers usually block the element
+
+            document.body.removeChild(ad);
+            return isBlocked;
+        }
+
+        if (isAdBlockerDetected()) {
+            document.getElementById("ad-blocker-message").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
